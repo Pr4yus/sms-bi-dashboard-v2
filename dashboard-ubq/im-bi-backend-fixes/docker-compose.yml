@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  backend:
+    container_name: im-bi-backend-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    ports:
+      - 4001:4001
+    networks:
+      - nest
+    command: node dist/main.js
+
+networks:
+  nest:
+    driver: bridge

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "luxon": "^3.5.0",
+    "mongodb": "^6.12.0",
+    "mysql2": "^3.12.0"
+  }
+}

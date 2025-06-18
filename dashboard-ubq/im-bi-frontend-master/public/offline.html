@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - SMS Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .offline-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .features h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            margin-right: 0.75rem;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .retry-btn {
+            background: linear-gradient(45deg, #4caf50, #66bb6a);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem;
+            min-width: 150px;
+        }
+
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .cache-btn {
+            background: linear-gradient(45deg, #ff9800, #ffb74d);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem;
+            min-width: 150px;
+        }
+
+        .cache-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+        }
+
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+
+        .connection-status {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: #f44336;
+            animation: pulse 2s infinite;
+        }
+
+        .connection-status.online {
+            background: #4caf50;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .analytics-preview {
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            .offline-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📱</div>
+        <h1>Sin Conexión</h1>
+        <p class="subtitle">SMS Analytics Dashboard no está disponible offline, pero puedes acceder a datos en caché</p>
+
+        <div class="features">
+            <h3>🔧 Funciones Disponibles Offline</h3>
+            <ul class="feature-list">
+                <li>Ver datos empresariales en caché</li>
+                <li>Consultar métricas guardadas localmente</li>
+                <li>Revisar reportes descargados previamente</li>
+                <li>Acceder a configuraciones del dashboard</li>
+            </ul>
+        </div>
+
+        <div class="analytics-preview">
+            <div class="metric-card">
+                <div class="metric-value">19.3M</div>
+                <div class="metric-label">SMS Mensuales</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">92%</div>
+                <div class="metric-label">Tasa de Éxito</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">148</div>
+                <div class="metric-label">Cuentas Activas</div>
+            </div>
+        </div>
+
+        <div>
+            <button class="retry-btn" onclick="retryConnection()">
+                🔄 Reintentar Conexión
+            </button>
+            <button class="cache-btn" onclick="accessCachedData()">
+                💾 Ver Datos en Caché
+            </button>
+        </div>
+
+        <div class="status">
+            <span class="connection-status" id="connectionStatus"></span>
+            <span id="statusText">Desconectado - Verificando conexión...</span>
+        </div>
+    </div>
+
+    <script>
+        // Check connection status
+        function updateConnectionStatus() {
+            const status = navigator.onLine;
+            const statusElement = document.getElementById('connectionStatus');
+            const statusText = document.getElementById('statusText');
+            
+            if (status) {
+                statusElement.classList.add('online');
+                statusText.textContent = 'Conexión restaurada - Recargando...';
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                statusElement.classList.remove('online');
+                statusText.textContent = 'Desconectado - Verificando conexión...';
+            }
+        }
+
+        // Retry connection
+        function retryConnection() {
+            updateConnectionStatus();
+            if (navigator.onLine) {
+                window.location.href = '/sms-analytics';
+            } else {
+                alert('Aún sin conexión. Inténtalo de nuevo en unos momentos.');
+            }
+        }
+
+        // Access cached data
+        function accessCachedData() {
+            // Try to access cached analytics data
+            if ('caches' in window) {
+                caches.open('sms-analytics-dynamic-v1.6.0').then(cache => {
+                    cache.match('/api/cached-analytics').then(response => {
+                        if (response) {
+                            // Redirect to a cached data view
+                            window.location.href = '/sms-analytics?cached=true';
+                        } else {
+                            alert('No hay datos en caché disponibles.');
+                        }
+                    });
+                });
+            } else {
+                alert('Cache no disponible en este navegador.');
+            }
+        }
+
+        // Check connection every 5 seconds
+        setInterval(updateConnectionStatus, 5000);
+
+        // Initial status check
+        updateConnectionStatus();
+
+        // Listen for online/offline events
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+
+        // Service Worker communication
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then(registration => {
+                // Request cache status
+                const messageChannel = new MessageChannel();
+                messageChannel.port1.onmessage = (event) => {
+                    const cacheStatus = event.data;
+                    console.log('Cache status:', cacheStatus);
+                };
+                
+                registration.active?.postMessage(
+                    { type: 'GET_CACHE_STATUS' },
+                    [messageChannel.port2]
+                );
+            });
+        }
+    </script>
+</body>
+</html> 
