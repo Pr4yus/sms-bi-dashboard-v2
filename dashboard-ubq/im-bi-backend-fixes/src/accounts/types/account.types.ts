@@ -8,4 +8,4 @@ export interface AccountWithChannels {
   name: string;
   instance: string;
   waba_channels: WABAChannel[];
-} 
+}

@@ -226,57 +226,57 @@ export class AccountsController {
   }
 
   // Costa Rica
-@Get('client-ids-cr')
-async getAllClientIdsCR() {
-  const uri = this.configService.get<string>('MONGO_URI_CR');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_CR');
-  return this.accountsService.getAllClientIds(uri, dbName);
-}
+  @Get('client-ids-cr')
+  async getAllClientIdsCR() {
+    const uri = this.configService.get<string>('MONGO_URI_CR');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_CR');
+    return this.accountsService.getAllClientIds(uri, dbName);
+  }
 
-// El Salvador
-@Get('client-ids-sv')
-async getAllClientIdsSV() {
-  const uri = this.configService.get<string>('MONGO_URI_SV');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_SV');
-  return this.accountsService.getAllClientIds(uri, dbName);
-}
+  // El Salvador
+  @Get('client-ids-sv')
+  async getAllClientIdsSV() {
+    const uri = this.configService.get<string>('MONGO_URI_SV');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_SV');
+    return this.accountsService.getAllClientIds(uri, dbName);
+  }
 
-// Nicaragua
-@Get('client-ids-ni')
-async getAllClientIdsNI() {
-  const uri = this.configService.get<string>('MONGO_URI_NI');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_NI');
-  return this.accountsService.getAllClientIds(uri, dbName);
-}
+  // Nicaragua
+  @Get('client-ids-ni')
+  async getAllClientIdsNI() {
+    const uri = this.configService.get<string>('MONGO_URI_NI');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_NI');
+    return this.accountsService.getAllClientIds(uri, dbName);
+  }
 
-// Honduras Claro
-@Get('client-ids-hn')
-async getAllClientIdsHN() {
-  const uri = this.configService.get<string>('MONGO_URI_CA');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_HN');
-  return this.accountsService.getAllClientIds(uri, dbName);
-}
+  // Honduras Claro
+  @Get('client-ids-hn')
+  async getAllClientIdsHN() {
+    const uri = this.configService.get<string>('MONGO_URI_CA');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_HN');
+    return this.accountsService.getAllClientIds(uri, dbName);
+  }
 
-// TIGO Honduras
-@Get('client-ids-tigo')
-async getAllClientIdsTigo() {
-  const uri = this.configService.get<string>('MONGO_URI_TIGO');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_TIGO');
-  return this.accountsService.getAllClientIds(uri, dbName);
-}
+  // TIGO Honduras
+  @Get('client-ids-tigo')
+  async getAllClientIdsTigo() {
+    const uri = this.configService.get<string>('MONGO_URI_TIGO');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_TIGO');
+    return this.accountsService.getAllClientIds(uri, dbName);
+  }
 
-// Regional
-@Get('client-ids-regional')
-async getAllClientIdsRegional() {
-  const uri = this.configService.get<string>('MONGO_URI_REGIONAL');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_REGIONAL');
-  return this.accountsService.getAllClientIds(uri, dbName);
-}
+  // Regional
+  @Get('client-ids-regional')
+  async getAllClientIdsRegional() {
+    const uri = this.configService.get<string>('MONGO_URI_REGIONAL');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_REGIONAL');
+    return this.accountsService.getAllClientIds(uri, dbName);
+  }
 
-@Get('waba-channels')
-getWABAChannels(): Promise<AccountWithChannels[]> {
-  const uri = this.configService.get<string>('MONGO_URI_REACH');
-  const dbName = this.configService.get<string>('MONGO_DB_NAME_REACH');
-  return this.accountsService.getWABAChannels(uri, dbName);
-}
+  @Get('waba-channels')
+  getWABAChannels(): Promise<AccountWithChannels[]> {
+    const uri = this.configService.get<string>('MONGO_URI_REACH');
+    const dbName = this.configService.get<string>('MONGO_DB_NAME_REACH');
+    return this.accountsService.getWABAChannels(uri, dbName);
+  }
 }
